@@ -1,12 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 /* Modified keybinds to work with Colemak layouts */
+/* Lambda color scheme from http://dotshare.it/dots/8288/ */
 
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
 
 /* appearance */
-static unsigned int borderpx  = 1;        /* border pixel of windows */
+static unsigned int borderpx  = 3;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -16,13 +17,13 @@ static int swallowfloating    = 0;        /* 1 means swallow floating windows by
 static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "icons:size=10" };
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
-static char selbgcolor[]            = "#E85017";
+static char *fonts[]          = { "notosansmono:size=8" };
+static char normbgcolor[]           = "#222222"; //"#222222"
+static char normbordercolor[]       = "#4a4131"; //"#444444"
+static char normfgcolor[]           = "#9fafaf"; //"#bbbbbb"
+static char selfgcolor[]            = "#222222"; //"#eeeeee"
+static char selbordercolor[]        = "#cb712a"; //"#E85017";
+static char selbgcolor[]            = "#cb712a"; //"#E85017";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -149,45 +150,54 @@ static Key keys[] = {
 	TAGKEYS(			XK_9,		8)
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
+	// { MODKEY,			XK_minus,		spawn,		SHCMD("") },
+	// { MODKEY|ShiftMask,		XK_minus,		spawn,		SHCMD("") },
+	// { MODKEY,			XK_equal,		spawn,		SHCMD("") },
+	// { MODKEY|ShiftMask,		XK_equal,		spawn,		SHCMD("") },
+	// { MODKEY,			XK_BackSpace,		spawn,		SHCMD("") },
+	// { MODKEY|ShiftMask,		XK_BackSpace,		spawn,		SHCMD("") },
+
 	{ MODKEY,			XK_Tab,		view,		{0} },
-	// { MODKEY,			XK_q,		spawn,	SHCMD("") },
+	// { MODKEY|ShiftMask,		XK_Tab,		spawn,	SHCMD("") },
+	{ MODKEY,			XK_q,		spawn,	SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	// { MODKEY,			XK_p,		spawn,	SHCMD("") },
 	// { MODKEY|ShiftMask,		XK_p,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
-	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
-	// { MODKEY,			XK_j,		spawn,	SHCMD("") },
-	// { MODKEY|ShiftMask,		XK_j,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_l,		spawn,	SHCMD("$SCRIPTS/i3lock.sh") }, /* centeredmaster */
-	// { MODKEY|ShiftMask,		XK_l,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
-	{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
-	{ MODKEY|ShiftMask,		XK_y,		setlayout,	{.v = &layouts[3]} }, /* dwindle */
+	{ MODKEY,			XK_g,		setlayout,	{.v = &layouts[0]} }, /* tile */
+	{ MODKEY|ShiftMask,		XK_g,		setlayout,	{.v = &layouts[1]} }, /* bstack */
+	{ MODKEY,			XK_j,		setlayout,	{.v = &layouts[2]} }, /* spiral */
+	{ MODKEY|ShiftMask,		XK_j,		setlayout,	{.v = &layouts[3]} }, /* dwindle */
+	{ MODKEY,			XK_l,		setlayout,	{.v = &layouts[4]} }, /* deck */
+	{ MODKEY|ShiftMask,		XK_l,		setlayout,	{.v = &layouts[5]} }, /* monocle */
+	{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
+	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	// { MODKEY|ShiftMask,		XK_u,		spawn,	SHCMD("") },
+	{ MODKEY,			XK_y,		incnmaster,		{.i =+ 1 } },
+	{ MODKEY|ShiftMask,		XK_y,		incnmaster,		{.i =- 1 } },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			XK_backslash,	spawn,	SHCMD("$SCRIPTS/passmenu-pass.sh") },
 	{ MODKEY|ShiftMask,		XK_backslash,	spawn,	SHCMD("$SCRIPTS/passmenu-otp.sh") },
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
-	{ MODKEY|ShiftMask,		XK_r,		spawn,	SHCMD(TERMINAL " -e htop") },
+	{ MODKEY,			XK_r,		spawn,	SHCMD(TERMINAL " -e /top") },
 	// { MODKEY|ShiftMask,		XK_r,		spawn,	SHCMD("") },
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
 	// { MODKEY|ShiftMask,		XK_s,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
+	{ MODKEY,			XK_t,		shiftview,	{ .i = -1 } },
+	{ MODKEY|ShiftMask,		XK_t,		shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_d,		spawn,	SHCMD("$SCRIPTS/run-recent.sh") },
 	// { MODKEY|ShiftMask,		XK_d,		spawn,	SHCMD("") },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
-	// { MODKEY|ShiftMask,		XK_h,		spawn,	SHCMD("") },
+	{ MODKEY|ShiftMask,		XK_h,		setmfact,	{.f = -0.01} },
 	/* N and E are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_i,		setmfact,      	{.f = +0.05} },
-	// { MODKEY|ShiftMask,		XK_i,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,		XK_i,		setmfact,      	{.f = +0.01} },
+	// { MODKEY,			XK_o,		spawn,		SHCMD("") },
+	// { MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD("") },
 	// TODO: Get the XK keys for the bracket keys
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
@@ -198,8 +208,8 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_c,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
-	{ MODKEY|ShiftMask,		XK_c,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
@@ -219,8 +229,9 @@ static Key keys[] = {
 	// { MODKEY,			XK_Insert,	spawn,		SHCMD("") },
 
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("zathura $HOME/dwm-cheatsheet.pdf") },
-	{ MODKEY,			XK_F2,		spawn,		SHCMD("$BROWSER") },
-	// { MODKEY,			XK_F3,		spawn,		SHCMD("") },
+	// { MODKEY,			XK_F2,		spawn,		SHCMD("") },
+	{ MODKEY|ShiftMask,		XK_F2,		spawn,		SHCMD("$BROWSER_SECONDARY") },
+	{ MODKEY,			XK_F3,		spawn,		SHCMD("favorites") },
 	// { MODKEY,			XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	// { MODKEY,			XK_F5,		spawn,		SHCMD("") },
 	// { MODKEY,			XK_F6,		spawn,		SHCMD("") },
