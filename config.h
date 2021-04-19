@@ -17,7 +17,7 @@ static int swallowfloating    = 0;        /* 1 means swallow floating windows by
 static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "Font Awesome 5 Free,Font Awesome 5 Free Regular:size=11" };
+static char *fonts[]          = { "Noto Sans:size=9", "Font Awesome 5 Free,Font Awesome 5 Free Regular:size=8" };
 static char normbgcolor[]           = "#222222"; //"#222222"
 static char normbordercolor[]       = "#4a4131"; //"#444444"
 static char normfgcolor[]           = "#9fafaf"; //"#bbbbbb"
@@ -190,7 +190,7 @@ static Key keys[] = {
 	// { MODKEY|ShiftMask,		XK_s,		spawn,	SHCMD("") },
 	{ MODKEY,			XK_t,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_t,		shifttag,	{ .i = -1 } },
-	{ MODKEY,			XK_d,		spawn,	SHCMD("$SCRIPTS/run-recent.sh") },
+	{ MODKEY,			XK_d,		spawn,	SHCMD("dmenu_run") },
 	// { MODKEY|ShiftMask,		XK_d,		spawn,	SHCMD("") },
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY|ShiftMask,		XK_h,		setmfact,	{.f = -0.01} },
@@ -216,15 +216,15 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	// { MODKEY,			XK_k,		spawn,	SHCMD("") },
 	// { MODKEY|ShiftMask,		XK_k,		spawn,	SHCMD("") },
-	{ MODKEY,			XK_m,		shiftview,	{ .i = 1} },
-	{ MODKEY|ShiftMask,		XK_m,		shifttag,	{ .i = 1} },
+	{ MODKEY,			XK_m,		shiftview,	{ .i = -1} },
+	{ MODKEY|ShiftMask,		XK_m,		shifttag,	{ .i = -1} },
 	// { MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_comma,	focusmon,	{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_comma,	tagmon,		{.i = -1 } },
 	{ MODKEY,			XK_period,	focusmon,	{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_period,	tagmon,		{.i = +1 } },
-	{ MODKEY,			XK_slash,	shiftview,	{ .i = -1 } },
-	{ MODKEY|ShiftMask,		XK_slash,	shifttag,	{ .i = -1 } },
+	{ MODKEY,			XK_slash,	shiftview,	{ .i = 1 } },
+	{ MODKEY|ShiftMask,		XK_slash,	shifttag,	{ .i = 1 } },
 
 	{ MODKEY,			XK_Page_Up,	shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_Page_Up,	shifttag,	{ .i = -1 } },

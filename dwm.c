@@ -1582,6 +1582,7 @@ run(void)
 void
 runAutostart(void) {
 	system("killall -q dwmblocks; dwmblocks &");
+	system("pidof transmission-daemon || transmission-daemon &");
 }
 
 void
