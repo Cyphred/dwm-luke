@@ -160,6 +160,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	// { MODKEY|ShiftMask,		XK_Tab,		spawn,	SHCMD("") },
 	{ MODKEY,			XK_q,		spawn,	SHCMD("$BROWSER") },
+	{ ControlMask|MODKEY,		XK_q,		spawn,	SHCMD("$BROWSER_SECONDARY") },
 	{ MODKEY|ShiftMask,		XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$SCRIPTS/dmenu-shared-drive.sh") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
