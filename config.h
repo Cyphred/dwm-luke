@@ -3,8 +3,8 @@
 /* Lambda color scheme from http://dotshare.it/dots/8288/ */
 
 /* Constants */
-#define TERMINAL "st"
-#define TERMCLASS "St"
+#define TERMINAL "urxvt"
+#define TERMCLASS "Urxvt"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -18,12 +18,12 @@ static int smartgaps          = 1;        /* 1 means no outer gap when there is 
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static char *fonts[]          = { "Noto Sans:size=9", "Font Awesome 5 Free,Font Awesome 5 Free Regular:size=8" };
-static char normbgcolor[]           = "#222222"; //"#222222"
-static char normbordercolor[]       = "#4a4131"; //"#444444"
-static char normfgcolor[]           = "#9fafaf"; //"#bbbbbb"
-static char selfgcolor[]            = "#222222"; //"#eeeeee"
-static char selbordercolor[]        = "#cb712a"; //"#E85017";
-static char selbgcolor[]            = "#cb712a"; //"#E85017";
+static char normbgcolor[]           = "#d2cbb6"; // bar color of title and inactive tab
+static char normbordercolor[]       = "#ddd7c0"; // border of inactive window
+static char normfgcolor[]           = "#686966"; // text color of title and inactive tag
+static char selfgcolor[]            = "#686966"; // text color of title and active tag
+static char selbordercolor[]        = "#008080"; // border of active window
+static char selbgcolor[]            = "#eae1c0"; // bar color of title and active tag
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
