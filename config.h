@@ -22,7 +22,7 @@ static char normbgcolor[]           = "#d2cbb6"; // bar color of title and inact
 static char normbordercolor[]       = "#ddd7c0"; // border of inactive window
 static char normfgcolor[]           = "#686966"; // text color of title and inactive tag
 static char selfgcolor[]            = "#686966"; // text color of title and active tag
-static char selbordercolor[]        = "#008080"; // border of active window
+static char selbordercolor[]        = "#cb712a"; // border of active window
 static char selbgcolor[]            = "#eae1c0"; // bar color of title and active tag
 static char *colors[][3] = {
        /*               fg           bg           border   */
