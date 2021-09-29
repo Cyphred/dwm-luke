@@ -22,7 +22,7 @@ static char normbgcolor[]           = "#d2cbb6"; // bar color of title and inact
 static char normbordercolor[]       = "#ddd7c0"; // border of inactive window
 static char normfgcolor[]           = "#686966"; // text color of title and inactive tag
 static char selfgcolor[]            = "#686966"; // text color of title and active tag
-static char selbordercolor[]        = "#cb712a"; // border of active window
+static char selbordercolor[]        = "#008080"; // border of active window
 static char selbgcolor[]            = "#eae1c0"; // bar color of title and active tag
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -162,7 +162,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_q,		spawn,	SHCMD("$BROWSER") },
 	{ ControlMask|MODKEY,		XK_q,		spawn,	SHCMD("$BROWSER --incognito") },
 	{ MODKEY|ShiftMask,		XK_q,		killclient,	{0} },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("$SCRIPTS/dmenu-shared-drive.sh") },
+	{ MODKEY,			XK_w,		spawn,		SHCMD("$FILEMANAGER") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} }, /* floating */
@@ -276,7 +276,7 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMicMute,	spawn,		SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	{ 0, XF86XK_PowerOff,		spawn,		SHCMD("sysact") },
 	{ 0, XF86XK_Calculator,		spawn,		SHCMD(TERMINAL " -e bc -l") },
-	{ 0, XF86XK_Sleep,		spawn,		SHCMD("zzz") },
+	{ 0, XF86XK_Sleep,		spawn,		SHCMD("$SCRIPTS/i3lock.sh") },
 	{ 0, XF86XK_WWW,		spawn,		SHCMD("$BROWSER") },
 	{ 0, XF86XK_DOS,		spawn,		SHCMD(TERMINAL) },
 	{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("$SCRIPTS/i3lock.sh") },
